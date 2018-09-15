@@ -21,6 +21,17 @@ main {
     border-bottom: 1px solid rgba(255, 255, 255, 0.23);
     margin-bottom: 1rem;
     height: 4.5rem;
+    position: relative;
+}
+#app-title[last-updated]:after {
+    content: "Last Update: " attr(last-updated);
+    position: absolute;
+    right: 1em;
+    font-size: .8rem;
+    font-weight: 100;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: .5;
 }
 .zone-holder {text-align: center}
 .zone-holder button {

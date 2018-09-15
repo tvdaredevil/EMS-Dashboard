@@ -23,29 +23,51 @@
             <div>View the distance between the epicenter of the calamity and nearby safe zones</div>
             <div class="map-holder">
                 <div id="map"></div>
-            </div>       
+            </div>
+            <div id='main-modal'>
+                <h2 class="title"></h2>
+                <caption>Detailed Overview:</caption>
+                <div class='attributes-holder'>
+                    <div class='attribute'>
+                        <span class='type'>Food</span>
+                        <span class='progress-bar'></span>
+                    </div>
+                    <div class='attribute'>
+                        <span class='type'>Water</span>
+                        <span class='progress-bar'></span>
+                    </div>
+                    <div class='attribute'>
+                        <span class='type'>Medecine</span>
+                        <span class='progress-bar'></span>
+                    </div>
+                </div>
+
         </main>
         <script src="/static/app.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoZqSH0q5kB_sgoHlDCBydCk_EbJDnNaM&callback=initMap"></script>
         <script>
             const $ = q => document.querySelector(q)
-            const ZoneHolder = $('.zone-holder > .data')
-            const makePersonHTML = p => {
-                return `
+            const EL = {
+                ZoneHolder: $('.zone-holder > .data'),
+                AppTitle: $('#app-title'),
+            }
+            const makePersonHTML = p => `
                     <button class='zone'>${p.name}</button>
                 `.trim(/\s/)
-            }
             const fetchPageData = _ => {
                 fetch('/api/listPeople')
                     .then(resp => resp.json())
                     .then(people => {
                         people = people || []
                         const peopleHTML = people.map(makePersonHTML).join("")
-                        console.log(peopleHTML)
-                        ZoneHolder.innerHTML = peopleHTML
+                        EL.ZoneHolder.innerHTML = peopleHTML
+                    })
+                    .then(_ => {
+                        EL.AppTitle.setAttribute('last-updated', new Date().toLocaleString().split(', ')[1])
                     })
             }
             setInterval(fetchPageData, 10e3)
+            fetchPageData()
         </script>
     </body>
 </html>
