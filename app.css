@@ -1,0 +1,40 @@
+html,body,head {padding:0;margin:0;border:0}
+* {box-sizing: border-box}
+body {
+    --bg-color: #1E202B;
+    --color: white;
+    --primary-text-color: var(--color);
+    font-family: Roboto;
+    background: var(--bg-color);
+    color: var(--color);
+}
+h1,h2 {font-family: Raleway}
+main {
+    padding: .75em
+}
+#app-title {
+    margin: 0;
+    padding: .5em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.23);
+    margin-bottom: .5em;
+}
+.zone-holder {text-align: center}
+
+.zone {
+    display: inline-block;
+    width: 10em;
+    padding: .75em 1em;
+    margin: .5em;
+    background: #2e7d32;
+}
+#map {
+    width: 100%;
+    height: 400px;
+    background-color: grey;
+}
+paper-input{
+    --text-primar-color: white;
+    --paper-input-color: white;
+    --primary-text-color: white;
+    --paper-input-container-color: white;
+}

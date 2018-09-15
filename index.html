@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>    
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="app.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto|Raleway" rel="stylesheet">
+        <title>SafeZone</title>
+    </head>
+    <body>
+        <h1 id="app-title">Zones Overview</h1>
+        <main>
+            <div>Pick a zone, to view more detailed information</div>
+            <ul class="zone-holder">
+                <button class="zone">Zone A</button>
+                <button class="zone">Zone B</button>
+                <button class="zone">Zone C</button>
+                <button class="zone">Zone D</button>
+                
+            </ul>
+
+
+            <h2>Disaster Tracker</h2>
+            <div>View the distance between the epicenter of the calamity and nearby safe zones</div>
+            <div class="map-holder">
+                <div id="map"></div>
+            </div>       
+            <div> Reload the map </div>
+            <ul class ="map options">
+                <button class = "reloadButton"> Update map </button>
+            </ul>
+        </main>
+        <script src="app.js"></script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoZqSH0q5kB_sgoHlDCBydCk_EbJDnNaM&callback=initMap">
+        </script>
+    </body>
+</html>
