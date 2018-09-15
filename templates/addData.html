@@ -29,10 +29,13 @@
                 margin: 1em auto;
                 padding: .75em 1em;
                 color: var(--color);
-                border: 2x solid currentColor;
-                background: rgba(255,255,255,.07);
+                border: 2px solid white;
+                background: rgba(255,255,255,.17);
+                transition: background .25s;
                 font-family: "Roboto";
             }
+            #add-data button:hover {background: rgba(255,255,255,.4)}
+            .elec {color: #969696; text-align: center}
         </style>
         <h1 id="app-title">New Zone</h1>
         <main>
@@ -40,14 +43,17 @@
             <div>
                 <form id="add-data" action="/submitData" method="POST">
                     <input name='name' placeholder='Enter: Zone A, zone B ... zone N'>
-                    <input name='occupancy' placeholder='Enter your occupancy'>
-                    <input name='capacity' placeholder='Enter your capacity'>
-                    <input name='condition' placeholder='Enter your condition'>
-                    <input name='location' placeholder='Enter your location'>    
+                    <input name='lat' placeholder='Enter Latitude'>
+                    <input name='long' placeholder='Enter Longitude'>
+                    <input name='status' placeholder='Enter your status'>
+                    <input name='food' placeholder='Enter your food' type='number' min=0 max=100>
+                    <input name='water' placeholder='Enter your water' type='number' min=0 max=100>
+                    <input name='occupancy' placeholder='Enter your occupancy' type='number' min=0>
+                    <input name='capacity' placeholder='Enter your capacity' type='number' min=0>
+                    <div class="elec"><label>Is there electricity?</label><input name='electricity' placeholder='Is there electricity: Yes / N', type="checkbox"></div>
                     <button>Submit</button>
                 </form>
             </div>
         </main>
-        <script src="/static/app.js"></script>
     </body>
 </html>

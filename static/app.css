@@ -58,6 +58,8 @@ main {
 }
 .disclaimer {font-style: italic;font-size: .8em}
 .disclaimer:before {content: "* "}
+body.modal #main-modal {display: block}
+#main-modal {display: none;position: absolute;top: 50%;transform: translate(-50%,-50%)}
 paper-input{
     --text-primar-color: white;
     --paper-input-color: white;
