@@ -37,7 +37,7 @@
                         <span class='progress-bar'></span>
                     </div>
                     <div class='attribute'>
-                        <span class='type'>Medecine</span>
+                        <span class='type'>Medicine</span>
                         <span class='progress-bar'></span>
                     </div>
                 </div>
@@ -55,12 +55,12 @@
                     <button class='zone'>${p.name}</button>
                 `.trim(/\s/)
             const fetchPageData = _ => {
-                fetch('/api/listPeople')
+                fetch('/api/listZones')
                     .then(resp => resp.json())
-                    .then(people => {
-                        people = people || []
-                        const peopleHTML = people.map(makePersonHTML).join("")
-                        EL.ZoneHolder.innerHTML = peopleHTML
+                    .then(zones => {
+                        zones = zones || []
+                        const zonesHTML = zones.map(makePersonHTML).join("")
+                        EL.ZoneHolder.innerHTML = zonesHTML
                     })
                     .then(_ => {
                         EL.AppTitle.setAttribute('last-updated', new Date().toLocaleString().split(', ')[1])
