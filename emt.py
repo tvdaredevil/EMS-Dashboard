@@ -4,9 +4,11 @@ import json
 
 app = Flask(__name__)
 
-
-with open('data.json') as f:
-    NAME_ARR = json.load(f)
+try:
+    with open('data.json') as f:
+        NAME_ARR = json.load(f)
+except:
+    NAME_ARR = []
 
 @app.route('/')
 def index():
@@ -22,17 +24,18 @@ def submitData():
         "capacity": request.form["capacity"]
         #"grade": ____
     }
-    added = 0
-    for p,i in NAME_ARR:
+    added = 0;i=0
+    for p in NAME_ARR:
         if p['name'] == request.form["name"]:
             NAME_ARR[i] = obj
             added = 1
             break
+        i=i+1
     if not added:
         NAME_ARR.append(obj)
     with open('data.json', 'w') as outfile:
         json.dump(NAME_ARR, outfile)
-    return redirect('/')
+    return redirect('/addData')
 
 @app.route('/addData')
 def addData():
