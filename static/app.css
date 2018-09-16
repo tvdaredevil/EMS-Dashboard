@@ -96,5 +96,5 @@ body.modal main:before {
 .progress-bar {height: 5px;color: #4caf50;position: relative;display: inline-block;}
 .progress-bar > .val {width: 0;transition: width .25s;top:0;height: 100%;left:0;background: currentColor;position: absolute;display: inline-block}
 
-[type="food"] > .progress-bar {color: #4caf50}
+[type="food"] > .progress-bar {color: #ff9900}
 [type="water"] > .progress-bar {color: #2196f3}

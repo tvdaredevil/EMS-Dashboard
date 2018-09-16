@@ -40,8 +40,10 @@
                 <div class='attribute' type='Occupancy'>    
                     <span class='progress-bar'><span class='val'></span></span>
                 </div>
-                <div class='attribute' type='Capacity'></div>
-                <div class='attribute' type='Status'></div>
+                <div class='attribute' type='Capacity'><span class='val'></span></span></div>
+                <div class='attribute' type='Electricity'><span class='val'></span></span></div>
+                <div class='attribute' type='Distance to Threat'><span class='val'></span></span></div>
+                <div class='attribute' type='Status'><span class='val'></span></span></div>
                 <!-- TODO: Finish all other attributes -->
             </div>
         </div>
@@ -56,12 +58,17 @@
                 modal: {
                     name: $('#main-modal > .title'),
                     food: $(`#main-modal > .attributes-holder > .attribute[type='Food'] > .progress-bar > .val`),
-                    Water: $(`#main-modal > .attributes-holder > .attribute[type='Water'] > .progress-bar > .val`),
-                    // TODO: Link other dom elements here
+                    water: $(`#main-modal > .attributes-holder > .attribute[type='Water'] > .progress-bar > .val`),
+                    occupancy: $(`#main-modal > .attributes-holder > .attribute[type='Occupancy'] > .progress-bar > .val`),
+                    capacity: $(`#main-modal > .attributes-holder > .attribute[type='Capacity'] > .progress-bar > .val`),
+                    electricity: $(`#main-modal > .attributes-holder > .attribute[type='Electricity'] > .progress-bar > .val`),
+                    distance: $(`#main-modal > .attributes-holder > .attribute[type='Distance to Threat'] > .progress-bar > .val`),
+                    status: $(`#main-modal > .attributes-holder > .attribute[type='Status'] > .progress-bar > .val`),
+                    // TODO: Link other dom elements here Broken WE NEED TO SPACE THEM OUT
                 },
             }
             const getZoneHealth = zone => {
-                // TODO: IMPLEMENT THIS
+                // TODO: IMPLEMENT 
                 return 'Good'
             }
             const makeZoneHTML = (z,i) => {
@@ -85,6 +92,8 @@
                 //TODO: You have all the variables for the different things in Zone, use them!
                 EL.modal.name.innerHTML = name
                 EL.modal.food.style.width = `${food}%` // Has to be between 0 and 100
+                EL.modal.water.style.width= `${water}%` // Has to be between 0 and 100
+                El.modal.occupancy.style.width= `${occupancy/capacity}` //Need fix here and for other details
             }
             const fetchPageData = _ => {
                 fetch('/api/listZones')
