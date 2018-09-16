@@ -9,6 +9,24 @@ urllib3.disable_warnings()
 app = Flask(__name__)
 epicenter = {"lat": 33.4, "lng": -75.5}
 
+def dist(lat1, lon1, lat2, lon2): 
+    R = 6371e3
+    toRad = pi / 180
+    lat1, lat2, lon1, lon2 = [float(x) for x in [lat1, lat2, lon1, lon2]]
+    phi_1 = lat1 * toRad
+    phi_2 = lat2 * toRad
+    delta_phi = (lat2-lat1) * toRad
+    delta_lambda = (lon2-lon1) * toRad
+
+    a = sin(delta_phi/2) * sin(delta_phi/2) + cos(phi_1) * cos(phi_2) * sin(delta_lambda/2) * sin(delta_lambda/2)
+    c = 2 * atan2(sqrt(a), sqrt(1-a))
+    d = R * c
+    return d
+
+def updateDistances():
+    for p in ZONE_ARR:
+        p['distance'] = dist(p['lat'], p['long'], epicenter['lat'], epicenter['lng'])
+
 try:
     with open('data.json') as f:
         ZONE_ARR = json.load(f)
@@ -23,23 +41,7 @@ try:
 except:
     pass
 
-def dist(lat1, lon1, lat2, lon2): 
-    R = 6371e3
-    toRad = pi / 180
-    print lat1
-    print lat2
-    print lon1
-    print lon2
-    lat1, lat2, lon1, lon2 = [float(x) for x in [lat1, lat2, lon1, lon2]]
-    phi_1 = lat1 * toRad
-    phi_2 = lat2 * toRad
-    delta_phi = (lat2-lat1) * toRad
-    delta_lambda = (lon2-lon1) * toRad
-
-    a = sin(delta_phi/2) * sin(delta_phi/2) + cos(phi_1) * cos(phi_2) * sin(delta_lambda/2) * sin(delta_lambda/2)
-    c = 2 * atan2(sqrt(a), sqrt(1-a))
-    d = R * c
-    return d
+updateDistances()
 
 @app.route('/')
 def index():
