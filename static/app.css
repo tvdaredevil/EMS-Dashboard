@@ -33,7 +33,9 @@ main {
     font-weight: 100;
     top: 50%;
     transform: translateY(-50%);
-    opacity: .5;
+    padding: .5em;
+    background: rgba(68, 68, 68, 0.74);
+    border-radius: 5px;
 }
 .zone-holder {text-align: center}
 .zone-holder button {
@@ -47,13 +49,17 @@ main {
     cursor: pointer;
     transition: background .25s;
     outline: none;
+    position: relative;
+    border-radius: 5px;
 }
 .zone-holder button:hover {background: #4caf50}
 .zone-holder .zone {width: 10em}
+.zone-holder .zone:after {content:'';transition: background .25s;position: absolute;top:0;left: 0;width: 100%;height: 100%}
+.zone-holder .zone:hover:after {background: rgba(255,255,255,.3)}
 .zone-holder .zone.fair {background: #fbc02d}
 .zone-holder .zone.bad {background: #f44336}
 .zone-holder > .data {display: inline}
-.zone-holder .add {border-radius: 50%}
+.zone-holder .add {border-radius: 50%;font-size: 1.1em;padding: 0;width: 2em;height: 2em;}
 .map-holder {flex: 1}
 #map {
     width: 100%;
@@ -75,6 +81,13 @@ body.modal main:before {
     z-index: 2;
 }
 #main-modal {display: none;width: 80vw;position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);padding: 1em;background: var(--bg-color);}
+#main-modal .desc {
+    color: gray;
+    margin-bottom: 1em;
+    display: inline-block;
+    font-style: italic;
+    font-size: .9em
+}
 #main-modal > .close {
     position: absolute;
     top: 0;
@@ -90,11 +103,57 @@ body.modal main:before {
 }
 #main-modal > .close:before {content: '✕'}
 #main-modal > .close:hover {background: #F44336}
-.attribute {display: flex;align-items: center;justify-content: center}
+.attributes-holder {
+    padding-top: 1.5em;
+    margin-top: .5em;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.attribute {display: flex;margin: .5em 0;align-items: center;justify-content: center}
 .attribute > * {flex: 1;width: 50%}
-.attribute[type]:before {content: attr(type);display: block; text-align: right;padding: 0 1em;width: 30%}
+
+.attribute > .val {
+    color: #e6d8d8;
+    font-size: 1em;
+    padding: .3rem;
+    background: #00000047;
+    box-shadow: inset 0 0 5px -1px black;
+    border-radius: 5px;
+    display: block;
+    flex-basis: auto;
+    width: 63%;
+}
+.attribute[type]:before {
+    content: attr(type);
+    display: block;
+    text-align: right;
+    color: #848484;
+    padding: .25rem 1rem;
+    width: 30%;
+    font-style: italic;
+    font-family: Raleway;
+    font-size: .9em;
+}
 .progress-bar {height: 5px;color: #4caf50;position: relative;display: inline-block;}
 .progress-bar > .val {width: 0;transition: width .25s;top:0;height: 100%;left:0;background: currentColor;position: absolute;display: inline-block}
 
-[type="food"] > .progress-bar {color: #ff9900}
-[type="water"] > .progress-bar {color: #2196f3}
+[type="Food"] > .progress-bar {color: #ff9900}
+[type="Water"] > .progress-bar {color: #2196f3}
+[type="Electricity"] > .progress-bar {background-color: #388e3c; height: 3px;color:white}
+[type="Electricity"] > .progress-bar:before {
+    position: absolute;
+    content: '✓';
+    background: inherit;
+    width: 1.25em;
+    padding: .25em;
+    border-radius: 50%;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+[type="Electricity"]:not(.present) > .progress-bar {
+    background: #f44336;
+}
+[type="Electricity"]:not(.present) > .progress-bar:before {
+    content: '✗';
+}

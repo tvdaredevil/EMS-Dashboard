@@ -28,7 +28,7 @@
         <div id='main-modal'>
             <button class='close' onclick="toggleModal()"></button>
             <h2 class="title"></h2>
-            <caption>Detailed Overview:</caption>
+            <span class="desc">Detailed Overview:</span>
             <div class='attributes-holder'>
                 <div class='attribute' type='Food'>
                     <span class='progress-bar'><span class='val'></span></span>
@@ -36,80 +36,39 @@
                 <div class='attribute' type='Water'>
                     <span class='progress-bar'><span class='val'></span></span>
                 </div>
-                <!-- Occupancy bar should be over capacity -->
-                <div class='attribute' type='Occupancy'>    
+                <div class='attribute' type='Capacity Ratio'>    
                     <span class='progress-bar'><span class='val'></span></span>
                 </div>
-                <div class='attribute' type='Capacity'><span class='val'></span></span></div>
-                <div class='attribute' type='Electricity'><span class='val'></span></span></div>
-                <div class='attribute' type='Distance to Threat'><span class='val'></span></span></div>
-                <div class='attribute' type='Status'><span class='val'></span></span></div>
+                <div class='attribute' type='Electricity'><span class='progress-bar'></span></div>
+                <div class='attribute' type='Distance to Threat'><span class='val'></span></div>
+                <div class='attribute' type='Status'><span class='val'></span></div>
                 <!-- TODO: Finish all other attributes -->
             </div>
         </div>
         <script src="/static/app.js"></script>
+        <script src="/static/map.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoZqSH0q5kB_sgoHlDCBydCk_EbJDnNaM&callback=initMap"></script>
         <script>
-            const $ = q => document.querySelector(q)
-            const AP = {} //Global shared storage
-            const EL = {
-                ZoneHolder: $('.zone-holder > .data'),
-                AppTitle: $('#app-title'),
-                modal: {
-                    name: $('#main-modal > .title'),
-                    food: $(`#main-modal > .attributes-holder > .attribute[type='Food'] > .progress-bar > .val`),
-                    water: $(`#main-modal > .attributes-holder > .attribute[type='Water'] > .progress-bar > .val`),
-                    occupancy: $(`#main-modal > .attributes-holder > .attribute[type='Occupancy'] > .progress-bar > .val`),
-                    capacity: $(`#main-modal > .attributes-holder > .attribute[type='Capacity'] > .progress-bar > .val`),
-                    electricity: $(`#main-modal > .attributes-holder > .attribute[type='Electricity'] > .progress-bar > .val`),
-                    distance: $(`#main-modal > .attributes-holder > .attribute[type='Distance to Threat'] > .progress-bar > .val`),
-                    status: $(`#main-modal > .attributes-holder > .attribute[type='Status'] > .progress-bar > .val`),
-                    // TODO: Link other dom elements here Broken WE NEED TO SPACE THEM OUT
-                },
-            }
-            const getZoneHealth = zone => {
-                // TODO: IMPLEMENT 
-                return 'Good'
-            }
-            const makeZoneHTML = (z,i) => {
-                const zoneStatus = getZoneHealth(z) // Good, Fair, Bad
-                const text = `
-                    <button class='zone ${zoneStatus.toLowerCase()}' onclick='openModal(${i})'>${z.name}</button>
-                `.trim(/\s/)
-                return text
-            }
-
             const toggleModal = _ => document.body.classList.toggle('modal')
             const openModal = i => {
                 const zone = AP.zones[AP.lastZone = i]
                 toggleModal()
                 fillModalData(zone)
             }
+            const _prettyDistance = d => `${Math.round(d*0.6214*100/1000)/100} mi`
             const fillModalData = zone => {
                 console.log('Refreshing modal!')
                 // Now using zone to populate modal!
-                const {name, status, lat, long, food, water, capacity, occupancy, electricity} = zone
+                const {name, status, distance, lat, long, food, water, capacity, occupancy, electricity} = zone
                 //TODO: You have all the variables for the different things in Zone, use them!
                 EL.modal.name.innerHTML = name
                 EL.modal.food.style.width = `${food}%` // Has to be between 0 and 100
-                EL.modal.water.style.width= `${water}%` // Has to be between 0 and 100
-                El.modal.occupancy.style.width= `${occupancy/capacity}` //Need fix here and for other details
+                EL.modal.water.style.width = `${water}%` // Has to be between 0 and 100
+                EL.modal.capacityRatio.style.width = `${occupancy/capacity*100}%`
+                EL.modal.electricity.classList[electricity=='Yes'?'add':'remove']('present')
+                EL.modal.distance.innerHTML = _prettyDistance(distance)
+                EL.modal.status.innerHTML = status
             }
-            const fetchPageData = _ => {
-                fetch('/api/listZones')
-                    .then(resp => resp.json())
-                    .then(zones => {
-                        AP.zones = zones = zones || []
-                        const zonesHTML = zones.map(makeZoneHTML).join("")
-                        EL.ZoneHolder.innerHTML = zonesHTML
-                    })
-                    .then(_ => {
-                        EL.AppTitle.setAttribute('last-updated', new Date().toLocaleString().split(', ')[1])
-                        !isNaN(AP.lastZone) && fillModalData(AP.zones[AP.lastZone])
-                    })
-            }
-            setInterval(fetchPageData, 2e3)
-            fetchPageData()
         </script>
     </body>
 </html>
