@@ -36,9 +36,12 @@
                 <div class='attribute' type='Water'>
                     <span class='progress-bar'><span class='val'></span></span>
                 </div>
-                <div class='attribute' type='Medicine'>
+                <!-- Occupancy bar should be over capacity -->
+                <div class='attribute' type='Occupancy'>    
                     <span class='progress-bar'><span class='val'></span></span>
                 </div>
+                <div class='attribute' type='Capacity'></div>
+                <div class='attribute' type='Status'></div>
                 <!-- TODO: Finish all other attributes -->
             </div>
         </div>
@@ -53,6 +56,7 @@
                 modal: {
                     name: $('#main-modal > .title'),
                     food: $(`#main-modal > .attributes-holder > .attribute[type='Food'] > .progress-bar > .val`),
+                    Water: $(`#main-modal > .attributes-holder > .attribute[type='Water'] > .progress-bar > .val`),
                     // TODO: Link other dom elements here
                 },
             }
