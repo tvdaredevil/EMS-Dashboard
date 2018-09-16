@@ -36,6 +36,9 @@ Let's apply this app to the ***Hurricane Florence***. The web app allows for tra
 
 The collective reporting of every manager can be viewed by a person at the top of the chain of command in charge of the emergency operations. So for example, the director of FEMA can view the needs and status of every zone without having to answer phone calls and replying to emails! 
 
+## Screenshot
+![SafeZone - Desktop View](/screenshots/desktop.png "SafeZone - Desktop View")
+
 ## Instructions:
 - Upon loading the front page, the user is greeted by a screen that has a panel for zone setup and a panel on the lower with a map showing the eye of the storm relative to the safe zones.
 - As safe zones are compiled by the user, custom markers are placed on the map using the Google Cloud Platform APIs for Google Maps.
