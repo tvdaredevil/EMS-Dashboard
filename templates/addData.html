@@ -41,14 +41,14 @@
             <div>Fill in attributes: </div>
             <div>
                 <form id="add-data" action="/submitData" method="POST">
-                    <input name='name' placeholder='Enter: Zone A, zone B ... zone N'>
+                    <input name='name' placeholder='Enter Zone A, Zone B ... Zone N'>
                     <input name='lat' placeholder='Enter Latitude'>
                     <input name='long' placeholder='Enter Longitude'>
-                    <input name='status' placeholder='Enter your status'>
-                    <input name='food' placeholder='Enter your food' type='number' min=0 max=100>
-                    <input name='water' placeholder='Enter your water' type='number' min=0 max=100>
-                    <input name='occupancy' placeholder='Enter your occupancy' type='number' min=0>
-                    <input name='capacity' placeholder='Enter your capacity' type='number' min=0>
+                    <input name='status' placeholder='Enter status of facility'>
+                    <input name='food' placeholder='Enter current food inventory (% remaining)' type='number' min=0 max=100>
+                    <input name='water' placeholder='Enter current water inventory (% remaining)' type='number' min=0 max=100>
+                    <input name='occupancy' placeholder='Enter current occupancy' type='number' min=0>
+                    <input name='capacity' placeholder='Enter max capacity that Zone is capable of hosting' type='number' min=0>
                     <input name='electricity' placeholder='Is there electricity: Yes / No'>
                     <button>Submit</button>
                 </form>
