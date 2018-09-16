@@ -74,7 +74,7 @@ body.modal main:before {
     content: '';
     z-index: 2;
 }
-#main-modal {display: none;position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);padding: 1em;background: var(--bg-color);}
+#main-modal {display: none;width: 80vw;position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);padding: 1em;background: var(--bg-color);}
 #main-modal > .close {
     position: absolute;
     top: 0;
@@ -90,8 +90,11 @@ body.modal main:before {
 }
 #main-modal > .close:before {content: '✕'}
 #main-modal > .close:hover {background: #F44336}
-.progress-bar {width: 10em;height: 5px;color: #4caf50;position: relative;display: inline-block}
-.progress-bar > .val {width: 0;transition: width .25s;top:0;height: 100%;left:0;background: currentColor;display: inline-block}
+.attribute {display: flex;align-items: center;justify-content: center}
+.attribute > * {flex: 1;width: 50%}
+.attribute[type]:before {content: attr(type);display: block; text-align: right;padding: 0 1em;width: 30%}
+.progress-bar {height: 5px;color: #4caf50;position: relative;display: inline-block;}
+.progress-bar > .val {width: 0;transition: width .25s;top:0;height: 100%;left:0;background: currentColor;position: absolute;display: inline-block}
 
 [type="food"] > .progress-bar {color: #4caf50}
 [type="water"] > .progress-bar {color: #2196f3}
