@@ -8,12 +8,14 @@ body {
     background: var(--bg-color);
     color: var(--color);
 }
-h1,h2 {font-family: Raleway}
+h1,h2 {font-family: Raleway;margin-top:0}
+main h2 {margin-top: .5em}
 main {
     padding: 1em;
     display: flex;
     flex-direction: column;
     height: calc(100vh - 4.5rem - 1rem);
+    transition: filter .25s;
 }
 #app-title {
     margin: 0;
@@ -48,6 +50,8 @@ main {
 }
 .zone-holder button:hover {background: #4caf50}
 .zone-holder .zone {width: 10em}
+.zone-holder .zone.fair {background: #fbc02d}
+.zone-holder .zone.bad {background: #f44336}
 .zone-holder > .data {display: inline}
 .zone-holder .add {border-radius: 50%}
 .map-holder {flex: 1}
@@ -59,10 +63,35 @@ main {
 .disclaimer {font-style: italic;font-size: .8em}
 .disclaimer:before {content: "* "}
 body.modal #main-modal {display: block}
-#main-modal {display: none;position: absolute;top: 50%;transform: translate(-50%,-50%)}
-paper-input{
-    --text-primar-color: white;
-    --paper-input-color: white;
-    --primary-text-color: white;
-    --paper-input-container-color: white;
+body.modal main {filter: blur(3px)}
+body.modal main:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.55);
+    content: '';
+    z-index: 2;
 }
+#main-modal {display: none;position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);padding: 1em;background: var(--bg-color);}
+#main-modal > .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3em;
+    height: 2em;
+    border: 0;
+    color: white;
+    transition: background .25s;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+}
+#main-modal > .close:before {content: '✕'}
+#main-modal > .close:hover {background: #F44336}
+.progress-bar {width: 10em;height: 5px;color: #4caf50;position: relative;display: inline-block}
+.progress-bar > .val {width: 0;transition: width .25s;top:0;height: 100%;left:0;background: currentColor;display: inline-block}
+
+[type="food"] > .progress-bar {color: #4caf50}
+[type="water"] > .progress-bar {color: #2196f3}
