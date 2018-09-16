@@ -28,7 +28,7 @@ Let's apply this app to the ***Hurricane Florence***. The web app allows for tra
 
 The collective reporting of every manager can be viewed by a person at the top of the chain of command in charge of the emergency operations. So for example, the director of FEMA can view the needs and status of every zone without having to answer phone calls and replying to emails! 
 
-##Instructions:
+## Instructions:
 - Upon loading the front page, the user is greeted by a screen that has a panel for zone setup and a panel on the lower with a map showing the eye of the storm relative to the safe zones.
 - As safe zones are compiled by the user, custom markers are placed on the map using the Google Cloud Platform APIs for Google Maps.
 - These markers are placed relative to the storm so the user can view the storm's location relative to the SafeZones setup.
@@ -45,7 +45,7 @@ By selecting each zone, the director in charge of appropriation of resources or 
 - Additionally, the page refreshes zone data every 2 seconds and the hurricane location is updated every time GPS coordinates for epicenter data are inputted (since there was no API available) .
 
 
-##Final thoughts
+## Final thoughts
 It is our sincere hope that this app enables the efficient management of large scale emergency management. This is just a proof of concept but it shows the real power and possibilities as well as the numerous advantages it would afford any organization in charge of tasks as important as these: Saving lives.
 
 ---
