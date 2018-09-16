@@ -1,4 +1,7 @@
 # SafeZone EMS
+> This project is dedicated to Hurricane Florence Victims and Victims of other such natural disasters
+
+## Description
 The objective of this system is to provide a more robust management/warning system for organizations who manage emergencies on a large scale. Examples of typical program deployment would be:
 - Hurricanes
 - Tsunamis
