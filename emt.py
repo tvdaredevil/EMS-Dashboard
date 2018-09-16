@@ -2,8 +2,12 @@
 from flask import Flask, request, render_template,redirect
 import json
 from math import *
+import urllib3
+import requests
 
+urllib3.disable_warnings()
 app = Flask(__name__)
+epicenter = {"lat": 33.4, "lng": -75.5}
 
 try:
     with open('data.json') as f:
@@ -11,7 +15,13 @@ try:
 except:
     ZONE_ARR = []
 
-epicenter = {"lat": 33.4, "lng": -75.5}
+try:
+    data = requests.get("https://weather.terrapin.com/wx/storm_show.jsp?area=ATL&storm=06A&dtype=ASCII", verify=False)
+    _,_,lat,lon,_,_ = [x for x in data.text.splitlines() if '<' not in x and '>' not in x and len(x) > 5][-1].split(', ')
+    epicenter = {"lat": float(lat), "lng": float(lon)}
+    print "Got em coordinates!"
+except:
+    pass
 
 def dist(lat1, lon1, lat2, lon2): 
     R = 6371e3

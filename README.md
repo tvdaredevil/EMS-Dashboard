@@ -9,6 +9,11 @@ The objective of this system is to provide a more robust management/warning syst
 
 The system is designed with versatility and mobility in mind allowing large organizations to be more efficient in communication and management of resources. The system allows for clear communication between large chains of command from the top of the totem pole to the bottom. We hope that this web app will enable organizations to manage their resources more effectively and ultimately prevent loss of life and lead to better outcomes over time leading to greater social good.
 
+## APIs Integrated
+- Google Maps API
+- Google Geolocation
+- Weather Terrapin (Storm Tracking)
+
 ## Features
 - Through better preparedness and real time updates every 2 seconds, the web app keeps anyone (with access) up to date on the latest status updates and provides for real-time situational awareness.
 - The server also actively tracks the storm as it progresses and updates all internal calculations on the fly!
@@ -42,7 +47,8 @@ The collective reporting of every manager can be viewed by a person at the top o
 By selecting each zone, the director in charge of appropriation of resources or the individual in charge of the collective zones can view information about the quantity/status of each resource and any status updates the Zone manager might have placed.
 - Aerial distance from the SafeZone to the threat. This is important since this distance is calculated for any number of zones that are being tracked by the program. This allows for important decisions to be made regarding the status of the zone and whether emergency evacuations should commence should the premises no longer remain safe or are projected to no longer be safe as they were earlier. 
 
-- Additionally, the page refreshes zone data every 2 seconds and the hurricane location is updated every time GPS coordinates for epicenter data are inputted (since there was no API available) .
+- The page refreshes zone data every 2 seconds, so that viability status is available as soon as possible
+- The hurricane location is updated real time when the server is initiated. The coordinates for epicenter data are fetched from: https://weather.terrapin.com/wx/storm_show.jsp?area=ATL&storm=06A&dtype=ASCII .
 
 
 ## Final thoughts
