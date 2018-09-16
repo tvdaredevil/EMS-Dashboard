@@ -49,4 +49,4 @@ By selecting each zone, the director in charge of appropriation of resources or 
 It is our sincere hope that this app enables the efficient management of large scale emergency management. This is just a proof of concept but it shows the real power and possibilities as well as the numerous advantages it would afford any organization in charge of tasks as important as these: Saving lives.
 
 ---
-Authors: [_**@tvdaredevil**_](https://github.com/tvdaredevil), [_**@karim-salem**_](https://github.com/karim-salem), [***Vladyslav Kuz***](https://www.linkedin.com/in/vladyslav-kuz-157162125)
+***Authors:*** [_**@tvdaredevil**_](https://github.com/tvdaredevil), [_**@karim-salem**_](https://github.com/karim-salem), [***Vladyslav Kuz***](https://www.linkedin.com/in/vladyslav-kuz-157162125)
