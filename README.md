@@ -63,4 +63,4 @@ By selecting each zone, the director in charge of appropriation of resources or 
 It is our sincere hope that this app enables the efficient management of large scale emergency management. This is just a proof of concept but it shows the real power and possibilities as well as the numerous advantages it would afford any organization in charge of tasks as important as these: Saving lives.
 
 ---
-***Authors:*** Lead Developer(front end, back end, algos): [_**@avdaredevil**_](https://github.com/avdaredevil) || Conceptualized App, Integrated Google APIs, HTML dev [_**@tvdaredevil**_](https://github.com/tvdaredevil), Other Devs(Back End & Algos): [_**@karim-salem**_](https://github.com/karim-salem), [***Vladyslav Kuz***](https://github.com/vladk97)
+***Authors:*** Lead Developer(front end, back end, algos, styling): [_**@avdaredevil**_](https://github.com/avdaredevil) || (Project Lead,Integrated Google APIs, Front End, Styling) [_**@tvdaredevil**_](https://github.com/tvdaredevil), Other Devs(Back End & Algos): [_**@karim-salem**_](https://github.com/karim-salem), [***Vladyslav Kuz***](https://github.com/vladk97)
